@@ -9,12 +9,12 @@ plugins {
 
 android {
     namespace = "com.example.learnapp"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.learnapp"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -52,6 +52,7 @@ dependencies {
     implementation(Dependencies.composeGraphics)
     implementation(Dependencies.composeToolingPreview)
     implementation(Dependencies.composeMaterial3)
+    implementation(libs.androidx.media3.common.ktx)
     testImplementation(Dependencies.junit)
     androidTestImplementation(Dependencies.androidxJunit)
     androidTestImplementation(Dependencies.espressoCore)
@@ -64,6 +65,20 @@ dependencies {
     implementation(Dependencies.hiltAndroid)
     kapt(Dependencies.hiltDaggerCompiler)
     kapt(Dependencies.hiltJetpackCompiler)
+    implementation(Dependencies.hiltNavigationCompose)
+
+    implementation(Dependencies.retrofit)
+    implementation(Dependencies.okhttp)
+    implementation(Dependencies.moshi)
+    implementation(Dependencies.moshiConverter)
+    implementation(Dependencies.loggingInterceptor)
+
+    implementation(Dependencies.coroutinesCore)
+    implementation(Dependencies.coroutinesAndroid)
+
+
+
+
 }
 
 kapt {

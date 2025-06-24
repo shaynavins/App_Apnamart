@@ -24,6 +24,22 @@ object Dependencies {
     // For Hilt Jetpack integrations like @HiltViewModel
     val hiltJetpackCompiler by lazy { "androidx.hilt:hilt-compiler:${Versions.hiltCompiler}" }
 
+    val hiltNavigationCompose by lazy { "androidx.hilt:hilt-navigation-compose:${Versions.hiltNavigationCompose}" }
+
+    val retrofit by lazy { "com.squareup.retrofit2:retrofit:${Versions.retrofit}" }
+    val okhttp by lazy { "com.squareup.okhttp3:okhttp:${Versions.okhttp}" }
+    val gsonConverter by lazy { "com.squareup.retrofit2:converter-gson:${Versions.gsonConverter}" }
+    val moshi by lazy { "com.squareup.moshi:moshi-kotlin:${Versions.moshi}" }
+    val moshiConverter by lazy { "com.squareup.retrofit2:converter-moshi:${Versions.moshiConverter}" }
+    val loggingInterceptor by lazy { "com.squareup.okhttp3:logging-interceptor:${Versions.loggingInterceptor}" }
+
+    val coroutinesCore by lazy { "org.jetbrains.kotlinx:kotlinx-coroutines-core: ${Versions.coroutines}" }
+    val coroutinesAndroid by lazy { "org.jetbrains.kotlinx:kotlinx-coroutines-android: ${Versions.coroutines}" }
+
+
+
+
+
 }
 
 object Modules {
