@@ -29,6 +29,10 @@ android {
                 "proguard-rules.pro"
             )
         }
+        debug {
+            buildConfigField("String", "BASE_URL", "\"https://arrow-uat.apnamart.in/\"")
+            buildConfigField("String", "API_KEY", "\"dT+NLQIHqljOR1CuidQ62h0a0MVc14JPleTMeBs5usA=\"")
+        }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -39,6 +43,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 
@@ -76,6 +81,7 @@ dependencies {
     implementation(Dependencies.coroutinesCore)
     implementation(Dependencies.coroutinesAndroid)
 
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
 
 

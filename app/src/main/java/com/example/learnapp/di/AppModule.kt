@@ -2,6 +2,7 @@ package com.example.learnapp.di
 
 import com.example.learnapp.data.AppConstants
 import com.example.learnapp.data.api.ApiService
+import com.example.learnapp.data.api.OtpApiService
 import com.example.learnapp.data.datasource.NewsDataSource
 import com.example.learnapp.data.datasource.NewsDataSourceImpl
 import com.example.learnapp.ui.repository.LearnRepository
@@ -17,6 +18,8 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
+
 
 //dagger module to define third party dependencies
 //all deps. created in this module should be accessible throughout project
@@ -27,32 +30,67 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun providesRetrofit() : Retrofit {
+    fun provideOtpApi(retrofit: Retrofit): OtpApiService {
+        return retrofit.create(OtpApiService::class.java)
+    }
 
-        val httpLoggingInterceptor = HttpLoggingInterceptor().apply {
-            level = HttpLoggingInterceptor.Level.BASIC
-        }
-        val httpClient = OkHttpClient().newBuilder().apply {
-            addInterceptor(httpLoggingInterceptor)
-        }
-
-        httpClient.apply {
-            readTimeout(60,TimeUnit.SECONDS)
-        }
-
-        val moshi = Moshi.Builder()
-            .add(KotlinJsonAdapterFactory()).build()
-        //create httploggininterceptor to log api calls
-        //create httpclient, create timeout
-        //created a retrofit object that we can inject
-
-        //inside datasource --> LearnDataSourceImpl class which calls @Inject method @Inject coonstructor(private val apiservice: ApiService)
-        return Retrofit.Builder()
-            .baseUrl(AppConstants.APP_BASE_URL)
-            .client(httpClient.build())
-            .addConverterFactory(MoshiConverterFactory.create(moshi))
+    @Provides
+    @Singleton
+    fun provideOkHttpClient(): OkHttpClient {
+        return OkHttpClient.Builder()
+            .addInterceptor { chain ->
+                val request = chain.request().newBuilder()
+                    .addHeader("Authorization", "Bearer ${AppConstants.API_KEY}")
+                    .addHeader("version", "2.15.0.0")
+                    .addHeader("User-Agent", "PostmanRuntime/7.44.1") // match Postman
+                    .addHeader("Accept-Encoding", "gzip, deflate, br")
+                    .addHeader("Accept", "*/*") // Add this
+                    .addHeader("Content-Type", "application/json; charset=UTF-8") // Optional: enforce
+                    .build()
+                chain.proceed(request)
+            }
             .build()
     }
+
+    @Provides
+    @Singleton
+    fun providesRetrofit(okHttpClient: OkHttpClient): Retrofit {
+        return Retrofit.Builder()
+            .baseUrl(AppConstants.BASE_URL)
+            .client(okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
+
+
+//    @Provides
+//    @Singleton
+//    fun providesRetrofit() : Retrofit {
+//
+//        val httpLoggingInterceptor = HttpLoggingInterceptor().apply {
+//            level = HttpLoggingInterceptor.Level.BASIC
+//        }
+//        val httpClient = OkHttpClient().newBuilder().apply {
+//            addInterceptor(httpLoggingInterceptor)
+//        }
+//
+//        httpClient.apply {
+//            readTimeout(60,TimeUnit.SECONDS)
+//        }
+//
+//        val moshi = Moshi.Builder()
+//            .add(KotlinJsonAdapterFactory()).build()
+//        //create httploggininterceptor to log api calls
+//        //create httpclient, create timeout
+//        //created a retrofit object that we can inject
+//
+//        //inside datasource --> LearnDataSourceImpl class which calls @Inject method @Inject coonstructor(private val apiservice: ApiService)
+//        return Retrofit.Builder()
+//            .baseUrl(AppConstants.APP_BASE_URL)
+//            .client(httpClient.build())
+//            .addConverterFactory(MoshiConverterFactory.create(moshi))
+//            .build()
+//    }
 
     @Singleton
     @Provides
@@ -70,6 +108,7 @@ class AppModule {
     fun providesLearnRepository(newsDataSource: NewsDataSource) : LearnRepository {
         return LearnRepository(newsDataSource)
     }
+
 
 
 }
