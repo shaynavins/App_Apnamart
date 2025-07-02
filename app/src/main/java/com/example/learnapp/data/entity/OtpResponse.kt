@@ -20,7 +20,8 @@ data class VerifyOtpRequest(
     val country_code: String,
     val otp: String,
     val phone: String,
-    val token: String
+    val token: String,
+    val device_identifier: String
 )
 
 data class VerifyOtpResponse(

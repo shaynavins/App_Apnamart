@@ -3,21 +3,20 @@ package com.example.learnapp.di
 import com.example.learnapp.data.AppConstants
 import com.example.learnapp.data.api.ApiService
 import com.example.learnapp.data.api.OtpApiService
+import com.example.learnapp.data.api.SelectApiService
+import com.example.learnapp.data.api.VehicleApiService
+
+import com.example.learnapp.data.api.WarehouseApiService
 import com.example.learnapp.data.datasource.NewsDataSource
 import com.example.learnapp.data.datasource.NewsDataSourceImpl
 import com.example.learnapp.ui.repository.LearnRepository
-import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
-import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 
@@ -40,12 +39,12 @@ class AppModule {
         return OkHttpClient.Builder()
             .addInterceptor { chain ->
                 val request = chain.request().newBuilder()
-                    .addHeader("Authorization", "Bearer ${AppConstants.API_KEY}")
+                    .addHeader("Content-Type", "application/json")
                     .addHeader("version", "2.15.0.0")
-                    .addHeader("User-Agent", "PostmanRuntime/7.44.1") // match Postman
+                    .addHeader("User-Agent", "PostmanRuntime/7.44.1")
+                    .addHeader("Accept", "*/*")
                     .addHeader("Accept-Encoding", "gzip, deflate, br")
-                    .addHeader("Accept", "*/*") // Add this
-                    .addHeader("Content-Type", "application/json; charset=UTF-8") // Optional: enforce
+                    .addHeader("Connection", "keep-alive")
                     .build()
                 chain.proceed(request)
             }
@@ -108,6 +107,27 @@ class AppModule {
     fun providesLearnRepository(newsDataSource: NewsDataSource) : LearnRepository {
         return LearnRepository(newsDataSource)
     }
+
+    @Provides
+    @Singleton
+    fun provideWarehouseApiService(retrofit: Retrofit): WarehouseApiService {
+        return retrofit.create(WarehouseApiService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideSelectApiService(retrofit: Retrofit): SelectApiService {
+        return retrofit.create(SelectApiService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideVehicleApiService(retrofit: Retrofit): VehicleApiService {
+        return retrofit.create(VehicleApiService::class.java)
+    }
+
+
+
 
 
 

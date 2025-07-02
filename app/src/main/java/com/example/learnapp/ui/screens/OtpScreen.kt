@@ -9,6 +9,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.learnapp.ui.viewmodel.OtpViewModel
+import android.util.Log
+
 
 @Composable
 fun OtpScreen(
@@ -56,9 +58,10 @@ fun OtpScreen(
 
         Button(
             onClick = {
+                Log.d("OtpScreen", "Verify OTP clicked")
                 viewModel.verifyOtp(phone, otp, deviceId) { success, token ->
                     if (success && token != null) {
-                        onOtpVerified(token) // passes token back to NavigationGraph
+                        onOtpVerified(token)
                     }
                 }
             },
@@ -66,6 +69,7 @@ fun OtpScreen(
         ) {
             Text("Verify OTP")
         }
+
 
         Spacer(modifier = Modifier.height(20.dp))
 

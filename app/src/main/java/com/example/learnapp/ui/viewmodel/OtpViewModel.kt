@@ -9,6 +9,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import android.util.Log
+
 
 @HiltViewModel
 class OtpViewModel @Inject constructor(
@@ -54,13 +56,15 @@ class OtpViewModel @Inject constructor(
     ) {
         viewModelScope.launch {
             try {
-                val request = mapOf(
-                    "account_id" to accountId,
-                    "client_app" to "rider",
-                    "country_code" to "+91",
-                    "otp" to otp,
-                    "phone" to phone,
-                    "device_identifier" to deviceId
+                val request = VerifyOtpRequest(
+                    account_id = accountId,
+                    client_app = "rider",
+                    country_code = "+91",
+                    otp = otp,
+                    phone = phone,
+                    token = token,
+                    device_identifier = deviceId
+
                 )
 
                 val response = api.verifyOtp(request)
@@ -68,6 +72,9 @@ class OtpViewModel @Inject constructor(
                 if (response.isSuccessful) {
                     val body = response.body()
                     val token = body?.token
+
+                    Log.d("OTP", "token: $token")
+
                     if (!token.isNullOrEmpty()) {
                         onResult(true, token)
                     } else {
