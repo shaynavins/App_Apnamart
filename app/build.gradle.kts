@@ -58,6 +58,7 @@ dependencies {
     implementation(Dependencies.composeToolingPreview)
     implementation(Dependencies.composeMaterial3)
     implementation(libs.androidx.media3.common.ktx)
+    implementation(libs.androidx.navigation.testing.android)
     testImplementation(Dependencies.junit)
     androidTestImplementation(Dependencies.androidxJunit)
     androidTestImplementation(Dependencies.espressoCore)

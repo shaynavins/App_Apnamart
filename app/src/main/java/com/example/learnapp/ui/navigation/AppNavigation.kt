@@ -1,18 +1,21 @@
 package com.example.learnapp.ui.components
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.compose.runtime.LaunchedEffect
-
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.learnapp.ui.navigation.Routes
 import com.example.learnapp.ui.screens.HomeScreen
 import com.example.learnapp.ui.screens.OtpScreen
+import com.example.learnapp.ui.screens.PickupStoreScreen
 import com.example.learnapp.ui.screens.VehicleScreen
 import com.example.learnapp.ui.screens.WarehouseScreen
+import com.example.learnapp.ui.screens.LandingScreen
+import com.example.learnapp.ui.screens.PhoneNumberScreen
+
 @Composable
 fun AppNavigationGraph() {
     val navController = rememberNavController()
@@ -21,7 +24,7 @@ fun AppNavigationGraph() {
 
     NavHost(
         navController = navController,
-        startDestination = if (useDevToken) Routes.WAREHOUSE_SCREEN else Routes.OTP_SCREEN
+        startDestination = Routes.LANDING_SCREEN
     ) {
         composable(Routes.OTP_SCREEN) {
             OtpScreen(
@@ -33,7 +36,7 @@ fun AppNavigationGraph() {
             )
         }
 
-        // Dev token redirect screen (NO UI)
+        // Dev token shortcut (redirect immediately)
         composable(Routes.WAREHOUSE_SCREEN) {
             LaunchedEffect(Unit) {
                 navController.navigate("${Routes.WAREHOUSE_SCREEN}/$devToken") {
@@ -42,7 +45,6 @@ fun AppNavigationGraph() {
             }
         }
 
-        // Actual route with token
         composable(
             route = "${Routes.WAREHOUSE_SCREEN}/{token}",
             arguments = listOf(navArgument("token") { type = NavType.StringType })
@@ -85,8 +87,49 @@ fun AppNavigationGraph() {
             val warehouseId = backStackEntry.arguments?.getInt("warehouseId") ?: 0
             HomeScreen(
                 token = token,
-                warehouseId = warehouseId
+                warehouseId = warehouseId,
+                navController = navController // ✅ pass navController here
             )
         }
+
+        composable(
+            route = "${Routes.PICKUP_STORE_SCREEN}/{token}/{warehouseId}",
+            arguments = listOf(
+                navArgument("token") { type = NavType.StringType },
+                navArgument("warehouseId") { type = NavType.IntType }
+            )
+        ) { backStackEntry ->
+            val token = backStackEntry.arguments?.getString("token") ?: ""
+            val warehouseId = backStackEntry.arguments?.getInt("warehouseId") ?: 0
+
+            PickupStoreScreen(
+                token = token,
+                warehouseId = warehouseId,
+                onStoreSelected = { storeId ->
+                    // Handle store selection logic (e.g., navigate or show details)
+                }
+            )
+        }
+        composable(Routes.LANDING_SCREEN) {
+            LandingScreen(
+                onContinue = {
+                    navController.navigate(Routes.PHONE_NUMBER_SCREEN)
+                }
+            )
+        }
+
+        composable(Routes.PHONE_NUMBER_SCREEN) {
+            PhoneNumberScreen(
+                onPhoneEntered = { phone ->
+                    // Optionally: save phone to ViewModel/state
+                    navController.navigate(Routes.OTP_SCREEN)
+                }
+            )
+        }
+
+
+
+
+
     }
 }

@@ -3,6 +3,7 @@ package com.example.learnapp.di
 import com.example.learnapp.data.AppConstants
 import com.example.learnapp.data.api.ApiService
 import com.example.learnapp.data.api.OtpApiService
+import com.example.learnapp.data.api.PickupStoreApiService
 import com.example.learnapp.data.api.SelectApiService
 import com.example.learnapp.data.api.VehicleApiService
 
@@ -124,6 +125,12 @@ class AppModule {
     @Singleton
     fun provideVehicleApiService(retrofit: Retrofit): VehicleApiService {
         return retrofit.create(VehicleApiService::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun providePickupStoreApiService(retrofit: Retrofit): PickupStoreApiService {
+        return retrofit.create(PickupStoreApiService::class.java)
     }
 
 
