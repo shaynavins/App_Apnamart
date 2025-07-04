@@ -8,6 +8,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
 import androidx.compose.material3.Divider
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -24,36 +25,44 @@ fun VehicleScreen(
     token: String,
     warehouseId: Int,
     viewModel: VehicleViewModel = hiltViewModel(),
-    onVehicleSelected: () -> Unit // Add this
+    onVehicleSelected: () -> Unit
 ) {
-    val vehicles by viewModel.vehicles.collectAsState()
-    val error by viewModel.errorMessage.collectAsState()
+    val uiState by viewModel.uiState.collectAsState()
 
     LaunchedEffect(Unit) {
         viewModel.fetchVehicles(token, warehouseId)
     }
 
     Column(Modifier.fillMaxSize().padding(16.dp)) {
-        if (vehicles.isEmpty() && error.isEmpty()) {
-            Text("Loading...")
-        }
+        when {
+            uiState.isLoading -> {
+                Text("Loading...")
+            }
 
-        if (error.isNotEmpty()) {
-            Text("Error: $error")
-        }
+            uiState.errorMessage.isNotEmpty() -> {
+                Text("Error: ${uiState.errorMessage}", color = MaterialTheme.colorScheme.error)
+            }
 
-        LazyColumn {
-            items(vehicles) { vehicle ->
-                Column {
-                    Text("Transporter: ${vehicle.name}")
-                    Text("Vehicle Number: ${vehicle.number}")
-                    Button(onClick = { onVehicleSelected() }) {
-                        Text("Continue")
+            uiState.vehicles.isEmpty() -> {
+                Text("No vehicles available.")
+            }
+
+            else -> {
+                LazyColumn {
+                    items(uiState.vehicles) { vehicle ->
+                        Column(Modifier.padding(vertical = 8.dp)) {
+                            Text("Transporter: ${vehicle.name}")
+                            Text("Vehicle Number: ${vehicle.number}")
+                            Button(onClick = { onVehicleSelected() }) {
+                                Text("Continue")
+                            }
+                            Divider(Modifier.padding(top = 8.dp))
+                        }
                     }
-                    Divider(Modifier.padding(vertical = 8.dp))
                 }
             }
         }
     }
 }
+
 

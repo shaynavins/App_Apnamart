@@ -5,27 +5,40 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
-import com.example.learnapp.ui.navigation.Routes
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.learnapp.ui.viewmodel.OtpViewModel
 
 @Composable
-fun PhoneNumberScreen(onPhoneEntered: (String) -> Unit) {
-    var phone by remember { mutableStateOf("") }
+fun PhoneNumberScreen(
+    onPhoneEntered: (String) -> Unit,
+    viewModel: OtpViewModel = hiltViewModel()
+) {
+    val phone by viewModel.phone.collectAsState()
 
     Column(
-        modifier = Modifier.fillMaxSize().padding(16.dp),
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp),
         verticalArrangement = Arrangement.Center
     ) {
         OutlinedTextField(
             value = phone,
-            onValueChange = { phone = it },
-            label = { Text("Phone Number") }
+            onValueChange = { viewModel.setPhone(it) },
+            label = { Text("Phone Number") },
+            modifier = Modifier.fillMaxWidth()
         )
+
         Spacer(modifier = Modifier.height(24.dp))
-        Button(onClick = {
-            onPhoneEntered(phone)
-        }) {
-            Text("Continue")
+
+        Button(
+            onClick = {
+                viewModel.sendOtp(phone)
+                onPhoneEntered(phone)
+            },
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text("Send OTP")
         }
     }
 }
+

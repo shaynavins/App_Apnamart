@@ -10,16 +10,19 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+
+data class PickupStoreUiState(
+    val stores: List<Store> = emptyList(),
+    val errorMessage: String = ""
+)
+
 @HiltViewModel
 class PickupStoreViewModel @Inject constructor(
     private val apiService: PickupStoreApiService
 ) : ViewModel() {
 
-    private val _stores = MutableStateFlow<List<Store>>(emptyList())
-    val stores = _stores.asStateFlow()
-
-    private val _errorMessage = MutableStateFlow("")
-    val errorMessage = _errorMessage.asStateFlow()
+    private val _uiState = MutableStateFlow(PickupStoreUiState())
+    val uiState = _uiState.asStateFlow()
 
     fun fetchPickupStores(token: String, warehouseId: Int) {
         viewModelScope.launch {
@@ -34,13 +37,21 @@ class PickupStoreViewModel @Inject constructor(
                 )
 
                 if (response.isSuccessful) {
-                    _stores.value = response.body()?.data ?: emptyList()
+                    _uiState.value = _uiState.value.copy(
+                        stores = response.body()?.data ?: emptyList(),
+                        errorMessage = ""
+                    )
                 } else {
-                    _errorMessage.value = "Error: ${response.code()} ${response.message()}"
+                    _uiState.value = _uiState.value.copy(
+                        errorMessage = "Error: ${response.code()} ${response.message()}"
+                    )
                 }
             } catch (e: Exception) {
-                _errorMessage.value = "Exception: ${e.localizedMessage}"
+                _uiState.value = _uiState.value.copy(
+                    errorMessage = "Exception: ${e.localizedMessage}"
+                )
             }
         }
     }
 }
+

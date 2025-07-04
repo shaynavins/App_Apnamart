@@ -13,41 +13,45 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+data class WarehouseUiState(
+    val warehouses: List<Warehouse> = emptyList(),
+    val errorMessage: String = "",
+    val selectionMessage: String = "",
+    val isLoading: Boolean = false
+)
 @HiltViewModel
 class WarehouseViewModel @Inject constructor(
     private val warehouseApi: WarehouseApiService,
     private val selectApi: SelectApiService
 ) : ViewModel() {
 
-    private val _warehouses = MutableStateFlow<List<Warehouse>>(emptyList())
-    val warehouses: StateFlow<List<Warehouse>> get() = _warehouses
-
-    private val _errorMessage = MutableStateFlow("")
-    val errorMessage: StateFlow<String> get() = _errorMessage
-
-    private val _selectionMessage = MutableStateFlow("")
-    val selectionMessage: StateFlow<String> get() = _selectionMessage
+    private val _uiState = MutableStateFlow(WarehouseUiState())
+    val uiState: StateFlow<WarehouseUiState> = _uiState
 
     fun fetchWarehouses(token: String) {
         viewModelScope.launch {
+            _uiState.value = _uiState.value.copy(isLoading = true, errorMessage = "", selectionMessage = "")
             try {
-                Log.d("WarehouseViewModel", "Fetching warehouses with token: token $token")
-
                 val response = warehouseApi.getWarehouses("token $token")
                 if (response.isSuccessful && response.body() != null) {
-                    _warehouses.value = response.body()!!
-                    Log.d("WarehouseViewModel", "Warehouses fetched: ${_warehouses.value.size}")
+                    _uiState.value = _uiState.value.copy(
+                        warehouses = response.body()!!,
+                        isLoading = false
+                    )
                 } else {
-                    _errorMessage.value = "API Error ${response.code()}: ${response.message()}"
-                    Log.e("WarehouseViewModel", _errorMessage.value)
+                    _uiState.value = _uiState.value.copy(
+                        errorMessage = "API Error ${response.code()}: ${response.message()}",
+                        isLoading = false
+                    )
                 }
             } catch (e: Exception) {
-                _errorMessage.value = "Exception: ${e.message ?: "Unknown error"}"
-                Log.e("WarehouseViewModel", "Exception occurred: ${e.message}", e)
+                _uiState.value = _uiState.value.copy(
+                    errorMessage = "Exception: ${e.message ?: "Unknown error"}",
+                    isLoading = false
+                )
             }
         }
     }
-
 
     fun selectWarehouse(token: String, whId: Int) {
         viewModelScope.launch {
@@ -57,16 +61,20 @@ class WarehouseViewModel @Inject constructor(
                     request = SelectWarehouseRequest(wh_id = whId)
                 )
                 if (response.isSuccessful) {
-                    _selectionMessage.value = response.body()?.message ?: "No message"
-                    Log.d("WarehouseViewModel", "Warehouse selected: ${_selectionMessage.value}")
+                    _uiState.value = _uiState.value.copy(
+                        selectionMessage = response.body()?.message ?: "No message"
+                    )
                 } else {
-                    _selectionMessage.value = "Error: ${response.code()} - ${response.message()}"
-                    Log.e("WarehouseViewModel", _selectionMessage.value)
+                    _uiState.value = _uiState.value.copy(
+                        selectionMessage = "Error: ${response.code()} - ${response.message()}"
+                    )
                 }
             } catch (e: Exception) {
-                _selectionMessage.value = "Exception: ${e.localizedMessage}"
-                Log.e("WarehouseViewModel", "Exception occurred: ${e.message}", e)
+                _uiState.value = _uiState.value.copy(
+                    selectionMessage = "Exception: ${e.localizedMessage}"
+                )
             }
         }
     }
 }
+

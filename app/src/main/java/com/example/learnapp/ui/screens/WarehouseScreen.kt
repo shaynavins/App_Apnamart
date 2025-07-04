@@ -16,11 +16,8 @@ fun WarehouseScreen(
     viewModel: WarehouseViewModel = hiltViewModel(),
     onWarehouseSelected: (Int) -> Unit,
 ) {
-    val warehouses by viewModel.warehouses.collectAsState()
-    val error by viewModel.errorMessage.collectAsState()
-    val selectionMessage by viewModel.selectionMessage.collectAsState()
+    val uiState by viewModel.uiState.collectAsState()
 
-    // Fetch warehouses once on token change
     LaunchedEffect(token) {
         viewModel.fetchWarehouses(token)
     }
@@ -30,25 +27,30 @@ fun WarehouseScreen(
             .fillMaxSize()
             .padding(16.dp)
     ) {
+        when {
+            uiState.isLoading -> {
+                Text("Loading...")
+            }
 
-        if (error.isNotEmpty()) {
-            Text(
-                text = "Error: $error",
-                color = MaterialTheme.colorScheme.error,
-                modifier = Modifier.padding(bottom = 16.dp)
-            )
-        }
+            uiState.errorMessage.isNotEmpty() -> {
+                Text(
+                    text = "Error: ${uiState.errorMessage}",
+                    color = MaterialTheme.colorScheme.error,
+                    modifier = Modifier.padding(bottom = 16.dp)
+                )
+            }
 
-        if (selectionMessage.isNotEmpty()) {
-            Text(
-                text = selectionMessage,
-                color = MaterialTheme.colorScheme.primary,
-                modifier = Modifier.padding(bottom = 16.dp)
-            )
+            uiState.selectionMessage.isNotEmpty() -> {
+                Text(
+                    text = uiState.selectionMessage,
+                    color = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier.padding(bottom = 16.dp)
+                )
+            }
         }
 
         LazyColumn {
-            items(warehouses) { warehouse ->
+            items(uiState.warehouses) { warehouse ->
                 Column(modifier = Modifier.padding(vertical = 8.dp)) {
                     Text("Name: ${warehouse.name}", style = MaterialTheme.typography.bodyLarge)
                     Text("City: ${warehouse.city}")
@@ -71,3 +73,4 @@ fun WarehouseScreen(
         }
     }
 }
+

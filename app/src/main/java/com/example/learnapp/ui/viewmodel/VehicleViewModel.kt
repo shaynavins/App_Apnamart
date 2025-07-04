@@ -11,24 +11,24 @@ import javax.inject.Inject
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 
-
+data class VehicleUiState(
+    val vehicles: List<Vehicle> = emptyList(),
+    val errorMessage: String = "",
+    val isLoading: Boolean = false
+)
 @HiltViewModel
 class VehicleViewModel @Inject constructor(
     private val vehicleApiService: VehicleApiService
 ): ViewModel() {
-    private val _vehicles = MutableStateFlow<List<Vehicle>> (emptyList())
-    val vehicles = _vehicles.asStateFlow()
 
-    private val _errorMessage = MutableStateFlow("")
-    val errorMessage = _errorMessage.asStateFlow()
+    private val _uiState = MutableStateFlow(VehicleUiState())
+    val uiState = _uiState.asStateFlow()
 
     fun fetchVehicles(token: String, warehouseId: Int) {
         viewModelScope.launch {
-            try {
-                Log.d("VehicleAPI", "Calling getVehicles with:")
-                Log.d("VehicleAPI", "Token: token $token")
-                Log.d("VehicleAPI", "Warehouse ID: $warehouseId")
+            _uiState.value = _uiState.value.copy(isLoading = true, errorMessage = "")
 
+            try {
                 val response = vehicleApiService.getVehicles(
                     listType = "detail",
                     warehouseId = warehouseId,
@@ -36,17 +36,24 @@ class VehicleViewModel @Inject constructor(
                     warehouseHeader = warehouseId
                 )
                 if (response.isSuccessful) {
-                    _vehicles.value = response.body()?.data ?: emptyList()
+                    _uiState.value = _uiState.value.copy(
+                        vehicles = response.body()?.data ?: emptyList(),
+                        isLoading = false,
+                        errorMessage = ""
+                    )
                 } else {
-                    _errorMessage.value = "Error: ${response.code()} - ${response.message()}"
+                    _uiState.value = _uiState.value.copy(
+                        errorMessage = "Error: ${response.code()} - ${response.message()}",
+                        isLoading = false
+                    )
                 }
 
             } catch (e: Exception) {
-                _errorMessage.value = "Exception: ${e.message}"
+                _uiState.value = _uiState.value.copy(
+                    errorMessage = "Exception: ${e.message}",
+                    isLoading = false
+                )
             }
         }
     }
-
-
-
 }

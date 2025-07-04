@@ -23,6 +23,18 @@ class OtpViewModel @Inject constructor(
     private var accountId: Int = -1
     private var token: String = ""
 
+    private val _phone = MutableStateFlow("")
+    val phone = _phone.asStateFlow()
+
+    private val _otp = MutableStateFlow("")
+    val otp = _otp.asStateFlow()
+
+    fun setOtp(newOtp: String) {
+        _otp.value = newOtp
+    }
+    fun setPhone(value: String) {
+        _phone.value = value
+    }
     fun sendOtp(phone: String) {
         viewModelScope.launch {
             try {

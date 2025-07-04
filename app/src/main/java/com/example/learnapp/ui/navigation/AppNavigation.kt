@@ -26,12 +26,15 @@ fun AppNavigationGraph() {
         navController = navController,
         startDestination = Routes.LANDING_SCREEN
     ) {
-        composable(Routes.OTP_SCREEN) {
+        composable(
+            route = "${Routes.OTP_SCREEN}/{phone}",
+            arguments = listOf(navArgument("phone") { type = NavType.StringType })
+        ) { backStackEntry ->
+            val phone = backStackEntry.arguments?.getString("phone") ?: ""
             OtpScreen(
+                phone = phone,
                 onOtpVerified = { token ->
-                    navController.navigate("${Routes.WAREHOUSE_SCREEN}/$token") {
-                        popUpTo(Routes.OTP_SCREEN) { inclusive = true }
-                    }
+                    navController.navigate("${Routes.WAREHOUSE_SCREEN}/$token")
                 }
             )
         }
@@ -122,7 +125,7 @@ fun AppNavigationGraph() {
             PhoneNumberScreen(
                 onPhoneEntered = { phone ->
                     // Optionally: save phone to ViewModel/state
-                    navController.navigate(Routes.OTP_SCREEN)
+                    navController.navigate("${Routes.OTP_SCREEN}/$phone")
                 }
             )
         }

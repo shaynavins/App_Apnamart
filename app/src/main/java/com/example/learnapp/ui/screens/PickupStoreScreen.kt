@@ -18,20 +18,19 @@ fun PickupStoreScreen(
     onStoreSelected: (Int) -> Unit,
     viewModel: PickupStoreViewModel = hiltViewModel()
 ) {
-    val stores by viewModel.stores.collectAsState()
-    val error by viewModel.errorMessage.collectAsState()
+    val uiState by viewModel.uiState.collectAsState()
 
     LaunchedEffect(Unit) {
         viewModel.fetchPickupStores(token, warehouseId)
     }
 
     Column(Modifier.fillMaxSize().padding(16.dp)) {
-        if (error.isNotEmpty()) {
-            Text("Error: $error", color = MaterialTheme.colorScheme.error)
+        if (uiState.errorMessage.isNotEmpty()) {
+            Text("Error: ${uiState.errorMessage}", color = MaterialTheme.colorScheme.error)
         }
 
         LazyColumn {
-            items(stores) { store ->
+            items(uiState.stores) { store ->
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -46,3 +45,4 @@ fun PickupStoreScreen(
         }
     }
 }
+
