@@ -49,41 +49,39 @@ android {
 
 dependencies {
 
-    implementation(Dependencies.coreKtx)
-    implementation(Dependencies.lifecycleRuntimeKtx)
-    implementation(Dependencies.activityCompose)
-    implementation(platform(Dependencies.composeBom))
-    implementation(Dependencies.composeUi)
-    implementation(Dependencies.composeGraphics)
-    implementation(Dependencies.composeToolingPreview)
-    implementation(Dependencies.composeMaterial3)
-    implementation(libs.androidx.media3.common.ktx)
-    implementation(libs.androidx.navigation.testing.android)
-    testImplementation(Dependencies.junit)
-    androidTestImplementation(Dependencies.androidxJunit)
-    androidTestImplementation(Dependencies.espressoCore)
-    androidTestImplementation(platform(Dependencies.composeBom))
-    androidTestImplementation(Dependencies.composeTestJunit4)
-    debugImplementation(Dependencies.composeTooling)
-    debugImplementation(Dependencies.composeTestManifest)
+    implementation(libs.androidx.core.ktx.v1120)
+    implementation(libs.androidx.appcompat.v161)
+    implementation(libs.material.v1110)
 
-    implementation(project(Modules.utilities))
-    implementation(Dependencies.hiltAndroid)
-    kapt(Dependencies.hiltDaggerCompiler)
-    kapt(Dependencies.hiltJetpackCompiler)
-    implementation(Dependencies.hiltNavigationCompose)
+    // Compose
+    implementation(libs.ui)
+    implementation("androidx.compose.material3:material3:1.3.2")
+    implementation(libs.androidx.activity.compose.v182)
+    implementation(libs.androidx.lifecycle.runtime.ktx.v262)
 
-    implementation(Dependencies.retrofit)
-    implementation(Dependencies.okhttp)
-    implementation(Dependencies.moshi)
-    implementation(Dependencies.moshiConverter)
-    implementation(Dependencies.loggingInterceptor)
+    // Hilt
+    implementation(libs.hilt.android)
+    implementation(libs.androidx.ui.tooling.preview.android)
+    implementation(libs.androidx.camera.core)
+    implementation(libs.navigation.testing.android)
+    kapt(libs.hilt.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
+    kapt(libs.androidx.hilt.compiler)
 
-    implementation(Dependencies.coroutinesCore)
-    implementation(Dependencies.coroutinesAndroid)
+    // Retrofit
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
 
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
+    // Coroutines
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.coroutines.android)
+
+    // Test
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit.v115)
+    androidTestImplementation(libs.androidx.espresso.core.v351)
+    implementation(libs.converter.gson.v290)
+    implementation (libs.androidx.lifecycle.viewmodel.ktx)
 
 
 

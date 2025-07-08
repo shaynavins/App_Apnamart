@@ -10,7 +10,6 @@ import com.example.learnapp.data.api.VehicleApiService
 import com.example.learnapp.data.api.WarehouseApiService
 import com.example.learnapp.data.datasource.NewsDataSource
 import com.example.learnapp.data.datasource.NewsDataSourceImpl
-import com.example.learnapp.ui.repository.LearnRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -103,11 +102,7 @@ class AppModule {
     fun provideNewsDataSource(apiService: ApiService) : NewsDataSource {
         return NewsDataSourceImpl(apiService)
     }
-    @Provides
-    @Singleton
-    fun providesLearnRepository(newsDataSource: NewsDataSource) : LearnRepository {
-        return LearnRepository(newsDataSource)
-    }
+
 
     @Provides
     @Singleton
