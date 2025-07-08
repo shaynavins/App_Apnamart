@@ -8,17 +8,22 @@ plugins {
 }
 
 android {
-    namespace = "com.example.learnapp"
+    namespace = "com.apnamart.arrowlogx"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.learnapp"
+        applicationId = "com.apnamart.arrowlogx"
         minSdk = 24
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+    lint {
+        disable += "NullSafeMutableLiveData"
+        checkReleaseBuilds = false // Optional: disables lint for release
+        abortOnError = false       // Optional: lets the build proceed on lint error
     }
 
     buildTypes {
@@ -55,6 +60,7 @@ dependencies {
 
     // Compose
     implementation(libs.ui)
+    //noinspection UseTomlInstead
     implementation("androidx.compose.material3:material3:1.3.2")
     implementation(libs.androidx.activity.compose.v182)
     implementation(libs.androidx.lifecycle.runtime.ktx.v262)

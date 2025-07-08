@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.utilities"
+    namespace = "com.apnamart.utilities"
     compileSdk = 35
 
     defaultConfig {
@@ -37,6 +37,10 @@ dependencies {
     implementation(libs.androidx.core.ktx.v1120)
     implementation(libs.androidx.appcompat.v161)
     implementation(libs.material.v1110)
+    implementation(libs.androidx.junit.ktx)
+    implementation(libs.androidx.monitor)
+    testImplementation(libs.junit)
+
 
 
 
