@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?><!-- START xml_defaults -->
+<defaultsMap>
+
+    <entry>
+        <key>test</key>
+        <value>Test</value>
+    </entry>
+
+    <entry>
+        <key>damage_reason_remote_update_time</key>
+        <value>
+            0
+        </value>
+        <key>invoice_type_remote_update_time</key>
+        <value>
+            0
+        </value>
+    </entry>
+
+    <entry>
+        <key>under_maintenance</key>
+        <value>false</value>
+    </entry>
+
+    <entry>
+        <key>max_expiry_from_now</key>
+        <value>10</value>
+    </entry>
+
+    <entry>
+        <key>under_maintenance_till</key>
+        <value></value>
+    </entry>
+
+    <entry>
+        <key>warehouse_config</key>
+        <value>
+            {
+            "warehouse_config": {
+            "invoice_merge_enabled": false,
+            "max_input_qty":99999,
+            "use_camerax_image_capture": true
+            }
+            }
+        </value>
+    </entry>
+</defaultsMap>

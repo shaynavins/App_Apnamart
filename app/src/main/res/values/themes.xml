@@ -1,8 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <style name="Theme.LearnApp" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your theme here -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorSecondary">@color/purple_700</item>
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
+    <!--Top level DayNight theme to be used in AndroidManifest.xml-->
+    <style name="Theme.LearnApp" parent="Base.Theme.LearnApp" />
+    <!--Base custom theme which will be shared between both light and dark theme variants-->
+    <style name="Base.Theme.LearnApp" parent="Base.Theme.ASM">
+        <!--Material color attributes (light theme) -->
+        <!--colorPrimary colors map to components and elements, such as app bars and buttons. -->
+        <!--colorSecondary colors are most often used as accents on components, such as FABs and -->
+        <!--selection controls.-->
+        <item name="colorPrimary">@color/colorOne</item>
+        <item name="colorAccent">@color/colorOne</item>
+        <item name="colorPrimaryVariant">@color/colorOneLight</item>
+
+        <item name="colorSecondary">@color/colorOne</item>
+        <item name="colorSecondaryVariant">@color/colorOneLight</item>
+
+        <item name="android:textColor">@color/colorTextAndIconsHighEmphasis</item>
+
+        <!--colorBackground appears behind scrollable content and is used for the default window-->
+        <!--background. colorSurface is mapped to the surface of components such as cards, sheets-->
+        <!--and menus. colorError is used to indicate an error state for components such as-->
+        <!--text fields.-->
+        <item name="android:colorBackground">@android:color/white</item>
+        <item name="colorSurface">@android:color/white</item>
+        <item name="colorError">@color/colorAccentRed500</item>
+        <!--"On" colors define how text, icons and strokes are colored in relation to the surface-->
+        <!--on which they appear.-->
+        <item name="colorOnPrimary">@android:color/white</item>
+        <item name="colorOnSecondary">@android:color/white</item>
+
+        <item name="colorOnBackground">@color/colorTextAndIconsHighEmphasis</item>
+        <item name="colorOnSurface">@color/colorTextAndIconsHighEmphasis</item>
+
+        <item name="colorOnError">@android:color/white</item>
+
+        <!--Material type attributes-->
+        <item name="textAppearanceHeadline1">@style/TextAppearance.MyTheme.Headline1</item>
+        <item name="textAppearanceHeadline2">@style/TextAppearance.MyTheme.Headline2</item>
+        <item name="textAppearanceHeadline3">@style/TextAppearance.MyTheme.Headline3</item>
+        <item name="textAppearanceHeadline4">@style/TextAppearance.MyTheme.Headline4</item>
+        <item name="textAppearanceHeadline5">@style/TextAppearance.MyTheme.Headline5</item>
+        <item name="textAppearanceHeadline6">@style/TextAppearance.MyTheme.Headline6</item>
+        <item name="textAppearanceSubtitle1">@style/TextAppearance.MyTheme.Subtitle1</item>
+        <item name="textAppearanceSubtitle2">@style/TextAppearance.MyTheme.Subtitle2</item>
+        <item name="textAppearanceBody1">@style/TextAppearance.MyTheme.Body1</item>
+        <item name="textAppearanceBody2">@style/TextAppearance.MyTheme.Body2</item>
+        <item name="textAppearanceButton">@style/TextAppearance.MyTheme.Button</item>
+        <item name="textAppearanceCaption">@style/TextAppearance.MyTheme.Caption</item>
+        <item name="textAppearanceOverline">@style/TextAppearance.MyTheme.Overline</item>
+
+        <!--Material shape attributes-->
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.MyTheme.SmallComponent
+        </item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.MyTheme.MediumComponent
+        </item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.MyTheme.LargeComponent
+        </item>
+
+        <!--Component styles-->
+        <item name="bottomSheetDialogTheme">@style/Theme.MyTheme.Light.BottomSheetDialog</item>
+        <item name="toolbarStyle">@style/Widget.MaterialComponents.Toolbar.Surface</item>
+        <item name="textInputStyle">@style/Widget.MyTheme.TextInputLayout.FilledBox</item>
+        <item name="materialButtonOutlinedStyle">@style/Widget.MyTheme.Button.OutlinedButton</item>
+        <item name="materialCardViewStyle">@style/Widget.MyTheme.CardView</item>
+        <item name="cardViewStyle">@style/Widget.MyTheme.CardView</item>
+        <item name="bottomNavigationStyle">@style/Widget.MyTheme.BottomNavigationView</item>
+
+        <!--Latest Design System-->
+        <!--Strictly use these for future developments-->
+        <item name="colorPrimary500">@color/colorPrimary500</item>
+        <item name="colorPrimary200">@color/colorPrimary200</item>
+        <item name="colorPrimary100">@color/colorPrimary100</item>
+
+        <item name="colorAccentGreen500">@color/colorAccentGreen500</item>
+        <item name="colorAccentGreen100">@color/colorAccentGreen100</item>
+
+        <item name="colorAccentOrange500">@color/colorAccentOrange500</item>
+        <item name="colorAccentOrange100">@color/colorAccentOrange100</item>
+
+        <item name="colorAccentPurple500">@color/colorAccentPurple500</item>
+        <item name="colorAccentPurple100">@color/colorAccentPurple100</item>
+
+        <item name="colorAccentRed500">@color/colorAccentRed500</item>
+        <item name="colorAccentRed100">@color/colorAccentRed100</item>
+
+        <item name="colorAccentBlue500">@color/colorAccentBlue500</item>
+        <item name="colorAccentBlue100">@color/colorAccentBlue100</item>
+
+        <item name="colorAccentYellow700">@color/colorAccentYellow700</item>
+        <item name="colorAccentYellow500">@color/colorAccentYellow500</item>
+        <item name="colorAccentYellow100">@color/colorAccentYellow100</item>
+
+
+        <item name="colorAccentGrey900">@color/colorAccentGrey900</item>
+        <item name="colorAccentGrey800">@color/colorAccentGrey800</item>
+        <item name="colorAccentGrey700">@color/colorAccentGrey700</item>
+        <item name="colorAccentGrey600">@color/colorAccentGrey600</item>
+        <item name="colorAccentGrey500">@color/colorAccentGrey500</item>
+        <item name="colorAccentGrey400">@color/colorAccentGrey400</item>
+        <item name="colorAccentGrey300">@color/colorAccentGrey300</item>
+        <item name="colorAccentGrey200">@color/colorAccentGrey200</item>
+        <item name="colorAccentGrey100">@color/colorAccentGrey100</item>
+
+
+        <item name="colorTextAndIconsHighEmphasis">@color/colorTextAndIconsHighEmphasis</item>
+        <item name="colorTextAndIconsMediumEmphasis">@color/colorTextAndIconsMediumEmphasis</item>
+        <item name="colorTextAndIconsLowEmphasis">@color/colorTextAndIconsLowEmphasis</item>
+        <item name="colorTextAndIconsDisabled">@color/colorTextAndIconsDisabled</item>
+        <item name="colorTextAndIconsWhite">@color/colorTextAndIconsWhite</item>
+
+        <item name="colorStructuralDisabled">@color/colorStructuralDisabled</item>
+        <item name="colorStructuralGrey">@color/colorStructuralGrey</item>
+        <item name="colorStructuralWhite">@color/colorStructuralWhite</item>
+
+        <item name="colorStrokeHighEmphasis">@color/colorStrokeHighEmphasis</item>
+        <item name="colorStrokeLowEmphasis">@color/colorStrokeLowEmphasis</item>
+
+        <item name="colorSemanticSuccess">@color/colorSemanticSuccess</item>
+        <item name="colorSemanticWarning">@color/colorSemanticWarning</item>
+        <item name="colorSemanticAttention">@color/colorSemanticAttention</item>
+        <item name="colorSemanticCritical">@color/colorSemanticCritical</item>
+
+        <item name="colorBackgroundCarton">@color/colorBackgroundCarton</item>
+        <item name="colorBackgroundLocation">@color/colorBackgroundLocation</item>
+        <item name="colorBackgroundProduct">@color/colorBackgroundProduct</item>
+        <item name="colorStrokeCarton">@color/colorStrokeCarton</item>
+        <item name="colorStrokeLocation">@color/colorStrokeLocation</item>
+        <item name="colorStrokeProduct">@color/colorStrokeProduct</item>
+
+        <item name="textAppearanceTitle_Title">@style/TextAppearance.MyTheme.Title.Title</item>
+        <item name="textAppearanceTitle_Subtitle">@style/TextAppearance.MyTheme.Title.Subtitle
+        </item>
+        <item name="textAppearanceHeadings_Heading1">
+            @style/TextAppearance.MyTheme.Headings.Heading1
+        </item>
+        <item name="textAppearanceHeadings_Heading2">
+            @style/TextAppearance.MyTheme.Headings.Heading2
+        </item>
+        <item name="textAppearanceHeadings_Heading3">
+            @style/TextAppearance.MyTheme.Headings.Heading3
+        </item>
+        <item name="textAppearanceBody_Body1">@style/TextAppearance.MyTheme.Body.Body1</item>
+        <item name="textAppearanceBody_Body2">@style/TextAppearance.MyTheme.Body.Body2</item>
+        <item name="textAppearanceBody_Caption">@style/TextAppearance.MyTheme.Body.Caption</item>
+        <item name="textAppearanceBody_Overline">@style/TextAppearance.MyTheme.Body.OverLine</item>
+        <item name="textAppearanceButton_Large">@style/TextAppearance.MyTheme.ButtonText.Large
+        </item>
+        <item name="textAppearanceButton_Medium">@style/TextAppearance.MyTheme.ButtonText.Medium
+        </item>
+        <item name="textAppearanceButton_Small">@style/TextAppearance.MyTheme.ButtonText.Small
+        </item>
+        <item name="textAppearanceNumber_25">@style/TextAppearance.MyTheme.NumberText.25</item>
+        <item name="textAppearanceNumber_17_Bold">@style/TextAppearance.MyTheme.NumberText.17Bold
+        </item>
+        <item name="textAppearanceNumber_17_Medium">
+            @style/TextAppearance.MyTheme.NumberText.17Medium
+        </item>
+        <item name="textAppearanceNumber_15">@style/TextAppearance.MyTheme.NumberText.15</item>
+        <item name="textAppearanceNumber_13_Regular">
+            @style/TextAppearance.MyTheme.NumberText.13Regular
+        </item>
+        <item name="textAppearanceNumber_13_Medium">
+            @style/TextAppearance.MyTheme.NumberText.13Medium
+        </item>
     </style>
+
+    <!--    <style observableSubCatName="Base.Theme.ASM" parent="Theme.MaterialComponents.DayNight.NoActionBar">-->
+    <style name="Base.Theme.ASM" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:statusBarColor">?attr/colorSurface</item>
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="android:navigationBarColor">?attr/colorSurface</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
+        <item name="android:navigationBarDividerColor" tools:targetApi="o_mr1">
+            ?android:colorBackground
+        </item>
+    </style>
+
+
+
+    <style name="TransparentActivityTheme" parent="Theme.LearnApp">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+
+    </style>
+
 </resources>

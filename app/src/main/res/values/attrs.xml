@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--Latest Design System-->
+    <!--Strictly use these for future developments-->
+
+    <attr name="tabStyle" format="reference" />
+
+    <!--Text Reference-->
+    <attr name="textAppearanceTitle_Title" format="reference" />
+    <attr name="textAppearanceTitle_Subtitle" format="reference" />
+    <attr name="textAppearanceHeadings_Heading1" format="reference" />
+    <attr name="textAppearanceHeadings_Heading2" format="reference" />
+    <attr name="textAppearanceHeadings_Heading3" format="reference" />
+    <attr name="textAppearanceBody_Body1" format="reference" />
+    <attr name="textAppearanceBody_Body2" format="reference" />
+    <attr name="textAppearanceBody_Caption" format="reference" />
+    <attr name="textAppearanceBody_Overline" format="reference" />
+    <attr name="textAppearanceButton_Large" format="reference" />
+    <attr name="textAppearanceButton_Medium" format="reference" />
+    <attr name="textAppearanceButton_Small" format="reference" />
+    <attr name="textAppearanceNumber_25" format="reference" />
+    <attr name="textAppearanceNumber_17_Bold" format="reference" />
+    <attr name="textAppearanceNumber_17_Medium" format="reference" />
+    <attr name="textAppearanceNumber_15" format="reference" />
+    <attr name="textAppearanceNumber_13_Regular" format="reference" />
+    <attr name="textAppearanceNumber_13_Medium" format="reference" />
+
+
+    <!--Color Reference-->
+    <attr name="colorPrimary500" format="color" />
+    <attr name="colorPrimary200" format="color" />
+    <attr name="colorPrimary100" format="color" />
+
+    <attr name="colorAccentGreen500" format="color" />
+    <attr name="colorAccentGreen100" format="color" />
+
+    <attr name="colorAccentOrange500" format="color" />
+    <attr name="colorAccentOrange100" format="color" />
+
+    <attr name="colorAccentPurple500" format="color" />
+    <attr name="colorAccentPurple100" format="color" />
+
+    <attr name="colorAccentRed600" format="color" />
+    <attr name="colorAccentRed500" format="color" />
+    <attr name="colorAccentRed100" format="color" />
+
+    <attr name="colorAccentBlue500" format="color" />
+    <attr name="colorAccentBlue100" format="color" />
+
+    <attr name="colorAccentYellow700" format="color" />
+    <attr name="colorAccentYellow500" format="color" />
+    <attr name="colorAccentYellow100" format="color" />
+
+    <attr name="colorAccentGrey900" format="color" />
+    <attr name="colorAccentGrey800" format="color" />
+    <attr name="colorAccentGrey700" format="color" />
+    <attr name="colorAccentGrey600" format="color" />
+    <attr name="colorAccentGrey500" format="color" />
+    <attr name="colorAccentGrey400" format="color" />
+    <attr name="colorAccentGrey300" format="color" />
+    <attr name="colorAccentGrey200" format="color" />
+    <attr name="colorAccentGrey100" format="color" />
+
+    <attr name="colorTextAndIconsHighEmphasis" format="color" />
+    <attr name="colorTextAndIconsMediumEmphasis" format="color" />
+    <attr name="colorTextAndIconsLowEmphasis" format="color" />
+    <attr name="colorTextAndIconsDisabled" format="color" />
+    <attr name="colorTextAndIconsWhite" format="color" />
+
+    <attr name="colorStructuralDisabled" format="color" />
+    <attr name="colorStructuralGrey" format="color" />
+    <attr name="colorStructuralWhite" format="color" />
+
+    <attr name="colorStrokeHighEmphasis" format="color" />
+    <attr name="colorStrokeLowEmphasis" format="color" />
+
+    <attr name="colorSemanticSuccess" format="color" />
+    <attr name="colorSemanticWarning" format="color" />
+    <attr name="colorSemanticAttention" format="color" />
+    <attr name="colorSemanticCritical" format="color" />
+
+    <attr name="colorBackgroundCarton" format="color" />
+    <attr name="colorBackgroundLocation" format="color" />
+    <attr name="colorBackgroundProduct" format="color" />
+
+    <attr name="colorStrokeCarton" format="color" />
+    <attr name="colorStrokeLocation" format="color" />
+    <attr name="colorStrokeProduct" format="color" />
+
+    <declare-styleable name="TagView">
+        <attr name="backgroundColor" format="color" />
+        <attr name="cornerRadius" format="dimension" />
+        <attr name="strokeWidth" format="dimension" />
+        <attr name="strokeColor" format="color" />
+        <attr name="android:drawablePadding" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="QuantityInputView">
+        <attr name="minQuantity" format="integer" />
+        <attr name="stepQuantity" format="integer" />
+        <attr name="focusable" format="boolean" />
+    </declare-styleable>
+</resources>

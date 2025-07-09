@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="keyline0dp">@dimen/_0DP</dimen>
+    <dimen name="keyline1dp">@dimen/_1DP</dimen>
+    <dimen name="keyline2dp">@dimen/_2DP</dimen>
+    <dimen name="keyline4dp">@dimen/_4DP</dimen>
+    <dimen name="keyline6dp">@dimen/_6DP</dimen>
+    <dimen name="keyline8dp">@dimen/_8DP</dimen>
+    <dimen name="keyline10dp">@dimen/_10DP</dimen>
+    <dimen name="keyline12dp">@dimen/_12DP</dimen>
+    <dimen name="keyline16dp">@dimen/_16DP</dimen>
+    <dimen name="keyline20dp">@dimen/_20DP</dimen>
+    <dimen name="keyline24dp">@dimen/_24DP</dimen>
+    <dimen name="keyline28dp">@dimen/_28DP</dimen>
+    <dimen name="keyline32dp">@dimen/_32DP</dimen>
+    <dimen name="keyline36dp">@dimen/_36DP</dimen>
+    <dimen name="keyline48dp">@dimen/_48DP</dimen>
+    <dimen name="keyline60dp">@dimen/_60DP</dimen>
+    <dimen name="keyline72dp">@dimen/_72DP</dimen>
+    <dimen name="keyline90dp">@dimen/_90DP</dimen>
+    <dimen name="keyline120dp">@dimen/_120DP</dimen>
+    <dimen name="keyline140dp">@dimen/_140DP</dimen>
+    <dimen name="keyline160dp">@dimen/_160DP</dimen>
+    <dimen name="keyline180dp">@dimen/_180DP</dimen>
+    <dimen name="keyline190dp">@dimen/_190DP</dimen>
+
+
+    <dimen name="circle_image">@dimen/_72DP</dimen>
+
+
+    <dimen name="keyline10sp">@dimen/_10SP</dimen>
+    <dimen name="keyline12sp">@dimen/_12SP</dimen>
+    <dimen name="keyline14sp">@dimen/_14SP</dimen>
+    <dimen name="keyline18sp">@dimen/_18SP</dimen>
+    <dimen name="keyline24sp">@dimen/_24SP</dimen>
+
+
+
+</resources>

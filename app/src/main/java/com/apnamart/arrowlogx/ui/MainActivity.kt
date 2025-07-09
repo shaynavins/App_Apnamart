@@ -12,8 +12,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.learnapp.ui.components.AppNavigationGraph
-import com.example.learnapp.ui.theme.LearnAppTheme
+import com.apnamart.arrowlogx.ui.theme.LearnAppTheme
+import com.apnamart.arrowlogx.ui.navigation.AppNavigationGraph
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

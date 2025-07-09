@@ -1,4 +1,72 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">LearnApp</string>
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+
+    <!-- Static description for logo -->
+    <string name="asm_logo">Apna warehouse Logo</string>
+
+    <!-- Loading Dialog -->
+    <string name="loading">Loading…</string>
+
+    <string name="app_name">ArrowLogX</string>
+
+    <!-- Http Errors -->
+    <string name="error_connection">Sorry, there was an internet connection error. Please try again.</string>
+    <string name="error_unexpected_contact_support">Unexpected error. Please contact support.</string>
+    <string name="error_500">Sorry, something went wrong at our end. We are trying to fix it ASAP. Please try again in some time.</string>
+    <string name="error_bad_request">Wrong data given. Please check and try again.</string>
+    <string name="forbidden_error">You do not have permission to perform this action.</string>
+    <string name="generic_error">Some Error Encountered, Please try Again Later</string>
+    <string name="generic_success">Action completed successfully</string>
+    <string name="error_logout">Session Expired. Please login again to start buying your favourite products.</string>
+
+
+    <string name="gif_content_description">Static GIF Content</string>
+    <string name="image_content_description">Static Image Content</string>
+    <string name="video_content_description">Static Video Content</string>
+
+    <!-- App Update dialog -->
+    <string name="title_new_update_available">A new update is available</string>
+    <string name="update_heading_major">Update your app</string>
+    <string name="update_heading_minor">Update your app in background</string>
+    <string name="message_force_update">Update your app to unlock new benefits and enjoy new features. What are you waiting for?</string>
+    <string name="message_soft_update">Let us update your app in the background while you continue buying your favorite products from us.</string>
+    <string name="update_later">Later</string>
+    <string name="update_now">Update</string>
+
+    <string name="splash_description">Apna Mart\nWarehouse</string>
+
+    <!-- Logout Dialog -->
+    <string name="label_you_sure">Are you sure?</string>
+    <string name="label_confirm_logout_message">You really want to logout from the app!</string>
+    <string name="button_yes">Yes</string>
+    <string name="button_no">No</string>
+
+    <string name="warehouse_pick_list_stm">Warehouse Pick List (STM)</string>
+    <string name="retry_again">Retry</string>
+    <string name="please_try_again_after_some_time">Please try again after some time</string>
+    <string name="no_stm_on_system">No STM on system</string>
+
+
+    <string name="logout_all">Logout All</string>
+    <string name="view_logged_in_devices">View Logged In Devices</string>
+    <string name="logging_out_from">Logging you out from %1$s</string>
+    <string name="logged_out_from">Logged out from %1$s successfully</string>
+    <string name="where_have_you_been">Where have you been?</string>
+
+    <string name="logging_you_out">Logging you out…</string>
+    <string name="logging_you_out_all">Logging you out of all devices…</string>
+    <string name="logout_success">You have been logged out successfully!</string>
+    <string name="logout_all_success">You have been logged out successfully from all devices!</string>
+
+    <string name="current_device">Current Device</string>
+    <string name="last_active">Last Active: %1$s</string>
+    <string name="unknown_device">Unknown Device</string>
+    <string name="logged_in_devices">Logged In Devices</string>
+
+
+    <!-- Reset Password Dialog -->
+    <string name="hint_old_password">Old Password</string>
+    <string name="hint_new_password">Enter New Password</string>
+    <string name="hint_password_new_confirm">Confirm New Password</string>
+
 </resources>

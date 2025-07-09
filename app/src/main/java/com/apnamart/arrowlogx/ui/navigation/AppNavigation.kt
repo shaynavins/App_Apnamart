@@ -1,4 +1,4 @@
-package com.example.learnapp.ui.components
+package com.apnamart.arrowlogx.ui.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -8,13 +8,13 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.learnapp.ui.navigation.Routes
-import com.example.learnapp.ui.screens.HomeScreen
+import com.apnamart.arrowlogx.ui.screens.HomeScreen
 import com.example.learnapp.ui.screens.OtpScreen
 import com.example.learnapp.ui.screens.PickupStoreScreen
 import com.example.learnapp.ui.screens.VehicleScreen
 import com.example.learnapp.ui.screens.WarehouseScreen
-import com.example.learnapp.ui.screens.LandingScreen
-import com.example.learnapp.ui.screens.PhoneNumberScreen
+import com.apnamart.arrowlogx.ui.screens.LandingScreen
+import com.apnamart.arrowlogx.ui.screens.PhoneNumberScreen
 
 @Composable
 fun AppNavigationGraph() {

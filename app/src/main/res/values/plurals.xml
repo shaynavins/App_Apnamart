@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="numberOfCarton">
+        <item quantity="one">1 Carton</item>
+        <item quantity="other">%d Cartons</item>
+    </plurals>
+
+    <plurals name="numberOfItem">
+        <item quantity="one">1 Item</item>
+        <item quantity="other">%d Items</item>
+    </plurals>
+</resources>

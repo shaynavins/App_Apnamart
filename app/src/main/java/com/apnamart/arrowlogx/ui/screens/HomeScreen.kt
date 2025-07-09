@@ -1,4 +1,4 @@
-package com.example.learnapp.ui.screens
+package com.apnamart.arrowlogx.ui.screens
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize

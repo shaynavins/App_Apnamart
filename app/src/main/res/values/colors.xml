@@ -1,5 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_500">#6200EE</color>
-    <color name="purple_700">#3700B3</color>
+    <color name="colorOneLight">#AFC9FC</color>
+    <color name="colorOne">#174FBF</color>
+    <color name="colorOneDark">#00358e</color>
+
+    <color name="whatsAppColor">#4FCE5D</color>
+
+    <!--Latest Design System-->
+    <!--Strictly use these for future developments-->
+
+    <color name="colorPrimary500">#174FBF</color>
+    <color name="colorPrimary200">#AFC9FC</color>
+    <color name="colorPrimary100">#EBF2FF</color>
+
+    <color name="colorAccentGreen500">#218203</color>
+    <color name="colorAccentGreen100">#EDFBE9</color>
+
+    <color name="colorAccentOrange500">#ED6704</color>
+    <color name="colorAccentOrange100">#FBEEE4</color>
+
+    <color name="colorAccentPurple500">#9B36EC</color>
+    <color name="colorAccentPurple100">#F2EAF9</color>
+
+    <color name="colorAccentRed600">#C41839</color>
+    <color name="colorAccentRed500">#DF1B41</color>
+    <color name="colorAccentRed100">#F5D9DE</color>
+
+    <color name="colorAccentBlue500">#174FBF</color>
+    <color name="colorAccentBlue100">#EBF2FF</color>
+
+    <color name="colorAccentYellow700">#826C00</color>
+    <color name="colorAccentYellow500">#EBC925</color>
+    <color name="colorAccentYellow100">#FCF7DC</color>
+
+    <color name="colorAccentGrey900">#030E1A</color>
+    <color name="colorAccentGrey800">#0E2133</color>
+    <color name="colorAccentGrey700">#1B344C</color>
+    <color name="colorAccentGrey600">#314B66</color>
+    <color name="colorAccentGrey500">#436180</color>
+    <color name="colorAccentGrey400">#5C7A99</color>
+    <color name="colorAccentGrey300">#889EB3</color>
+    <color name="colorAccentGrey200">#B4C0CC</color>
+    <color name="colorAccentGrey100">#D3DCE5</color>
+
+    <color name="colorTextAndIconsHighEmphasis">#1A1B25</color>
+    <color name="colorTextAndIconsMediumEmphasis">#414552</color>
+    <color name="colorTextAndIconsLowEmphasis">#687385</color>
+    <color name="colorTextAndIconsDisabled">#A3ACBA</color>
+    <color name="colorTextAndIconsWhite">#FFFFFF</color>
+
+    <color name="colorStructuralDisabled">#EBEDF0</color>
+    <color name="colorStructuralGrey">#F6F8FA</color>
+    <color name="colorStructuralWhite">#FFFFFF</color>
+
+    <color name="colorStrokeHighEmphasis">#DEDFE1</color>
+    <color name="colorStrokeLowEmphasis">#EBEEF1</color>
+
+    <color name="colorSemanticSuccess">#218203</color>
+    <color name="colorSemanticWarning">#EBC925</color>
+    <color name="colorSemanticAttention">#ED6704</color>
+    <color name="colorSemanticCritical">#DF1B41</color>
+
+    <color name="colorBackgroundCarton">#FFF5F1</color>
+    <color name="colorBackgroundLocation">#FFE5ED</color>
+    <color name="colorBackgroundProduct">#F0EDFF</color>
+
+    <color name="colorStrokeCarton">#FAA682</color>
+    <color name="colorStrokeLocation">#F15484</color>
+    <color name="colorStrokeProduct">#D5CCFF</color>
+
+    <color name="ic_arrow_logo_background">#FFFFFF</color>
 </resources>

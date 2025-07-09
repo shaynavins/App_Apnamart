@@ -1,34 +1,56 @@
-package com.example.learnapp.ui.theme
+package com.apnamart.arrowlogx.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
-// Set of Material typography styles to start with
 val Typography = Typography(
-    bodyLarge = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
-        fontSize = 16.sp,
-        lineHeight = 24.sp,
-        letterSpacing = 0.5.sp
-    )
-    /* Other default text styles to override
+    displayLarge = TextStyle(
+        fontFamily = InterMedium,
+        fontSize = 96.sp
+    ),
+    displayMedium = TextStyle(
+        fontFamily = InterMedium,
+        fontSize = 64.sp
+    ),
+    displaySmall = TextStyle(
+        fontFamily = InterMedium,
+        fontSize = 48.sp
+    ),
+    headlineLarge = TextStyle(
+        fontFamily = InterMedium,
+        fontSize = 34.sp
+    ),
+    headlineMedium = TextStyle(
+        fontFamily = InterSemiBold,
+        fontSize = 24.sp
+    ),
+    headlineSmall = TextStyle(
+        fontFamily = InterSemiBold,
+        fontSize = 20.sp
+    ),
     titleLarge = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
-        fontSize = 22.sp,
-        lineHeight = 28.sp,
-        letterSpacing = 0.sp
+        fontFamily = Inter,
+        fontSize = 16.sp
+    ),
+    titleMedium = TextStyle(
+        fontFamily = Inter,
+        fontSize = 14.sp
+    ),
+    bodyLarge = TextStyle(
+        fontFamily = Inter,
+        fontSize = 16.sp
+    ),
+    bodyMedium = TextStyle(
+        fontFamily = Inter,
+        fontSize = 14.sp
+    ),
+    labelLarge = TextStyle(
+        fontFamily = InterMedium,
+        fontSize = 14.sp
     ),
     labelSmall = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Medium,
-        fontSize = 11.sp,
-        lineHeight = 16.sp,
-        letterSpacing = 0.5.sp
+        fontFamily = Inter,
+        fontSize = 10.sp
     )
-    */
 )
