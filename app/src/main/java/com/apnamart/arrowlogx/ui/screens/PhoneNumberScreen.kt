@@ -17,6 +17,7 @@ import com.apnamart.arrowlogx.ui.theme.InterBold
 import com.apnamart.arrowlogx.ui.theme.InterMedium
 import com.apnamart.arrowlogx.ui.theme.InterSemiBold
 import com.apnamart.arrowlogx.ui.viewmodel.OtpViewModel
+import androidx.compose.ui.Alignment
 
 @Composable
 fun PhoneNumberScreen(
@@ -32,13 +33,16 @@ fun PhoneNumberScreen(
         verticalArrangement = Arrangement.Center
     ) {
         Image(
-            painter = painterResource(id = R.drawable.frame_16865),
+            painter = painterResource(id = R.drawable.logo),
             contentDescription = null,
-            contentScale = ContentScale.FillBounds,
-            modifier = Modifier.padding(start = 4.dp)
+            contentScale = ContentScale.Fit,
+            modifier = Modifier
+                .size(120.dp) // uniform square frame
+                .align(Alignment.CenterHorizontally)
         )
 
-        Spacer(modifier = Modifier.height(24.dp))
+        Spacer(modifier = Modifier.height(30.dp))
+
         Text (
             text ="Login",
             color = MaterialTheme.colorScheme.primary, // uses value from LightColorScheme or DarkColorScheme
@@ -58,7 +62,7 @@ fun PhoneNumberScreen(
             modifier = Modifier.fillMaxWidth(),
                     leadingIcon = {
                 Text(
-                    text = "+90 |",
+                    text = "+91 |",
                     style = MaterialTheme.typography.bodyMedium,
                     modifier = Modifier.padding(start = 4.dp)
                 )
@@ -75,14 +79,16 @@ fun PhoneNumberScreen(
                 onPhoneEntered(phone)
             },
             modifier = Modifier.fillMaxWidth(),
-            shape = RoundedCornerShape(12.dp), // Same shape as input
-            contentPadding = PaddingValues(0.dp), // Remove extra padding
-            elevation = ButtonDefaults.buttonElevation(0.dp)
+            shape = RoundedCornerShape(12.dp),
+            contentPadding = PaddingValues(0.dp),
+            elevation = ButtonDefaults.buttonElevation(0.dp),
+            
         ) {
-            Text(text = "Continue",
-                modifier = Modifier.fillMaxWidth(), // Center the text
-                textAlign = TextAlign.Center)
-
+            Text(
+                text = "Continue",
+                modifier = Modifier.fillMaxWidth(),
+                textAlign = TextAlign.Center
+            )
         }
 
     }

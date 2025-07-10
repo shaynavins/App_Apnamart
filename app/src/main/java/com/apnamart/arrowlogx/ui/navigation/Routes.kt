@@ -1,4 +1,4 @@
-package com.example.learnapp.ui.navigation
+package com.apnamart.arrowlogx.ui.navigation
 
 object Routes {
     const val HOME_SCREEN = "HOME"
@@ -9,6 +9,7 @@ object Routes {
     const val PICKUP_STORE_SCREEN = "PICKUP_STORE"
     const val LANDING_SCREEN = "landing"
     const val PHONE_NUMBER_SCREEN = "phone_number"
+    const val DROP_CARTON_SCREEN = "drop_carton"
 
 
 }

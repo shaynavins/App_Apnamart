@@ -8,6 +8,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import javax.inject.Inject
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 data class VehicleUiState(
@@ -23,6 +24,12 @@ class VehicleViewModel @Inject constructor(
     private val _uiState = MutableStateFlow(VehicleUiState())
     val uiState = _uiState.asStateFlow()
 
+    private val _selectedVehicleId = MutableStateFlow<Int?>(null)
+    val selectedVehicleId: StateFlow<Int?> = _selectedVehicleId
+
+    fun selectVehicle(vehicleId: Int) {
+        _selectedVehicleId.value = vehicleId
+    }
     fun fetchVehicles(token: String, warehouseId: Int) {
         viewModelScope.launch {
             _uiState.value = _uiState.value.copy(isLoading = true, errorMessage = "")

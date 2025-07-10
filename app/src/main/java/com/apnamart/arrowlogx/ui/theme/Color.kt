@@ -2,7 +2,6 @@ package com.apnamart.arrowlogx.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val ColorOneLight = Color(0xFFAFC9FC)
 val ColorOne = Color(0xFF174FBF)
 val ColorOneDark = Color(0xFF00358E)
 

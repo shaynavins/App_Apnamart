@@ -23,15 +23,17 @@ class WarehouseViewModel @Inject constructor(
     private val warehouseApi: WarehouseApiService,
     private val selectApi: SelectApiService
 ) : ViewModel() {
+    private val hardcodedToken = "124d6f6988b880c73f5f590a2d694dd96c9636bec2dc533c1f8e3f0a788989b5"
 
     private val _uiState = MutableStateFlow(WarehouseUiState())
     val uiState: StateFlow<WarehouseUiState> = _uiState
 
-    fun fetchWarehouses(token: String) {
+//    fun fetchWarehouses(token: String) {
+    fun fetchWarehouses() {
         viewModelScope.launch {
             _uiState.value = _uiState.value.copy(isLoading = true, errorMessage = "", selectionMessage = "")
             try {
-                val response = warehouseApi.getWarehouses("token $token")
+                val response = warehouseApi.getWarehouses("token $hardcodedToken")
                 if (response.isSuccessful && response.body() != null) {
                     _uiState.value = _uiState.value.copy(
                         warehouses = response.body()!!,
